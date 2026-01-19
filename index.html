@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gürkan Şentürk - Portföy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: white;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-card li {
+            padding: 0.3rem 0;
+            opacity: 0.95;
+        }
+
+        .skill-card li:before {
+            content: "▹ ";
+            margin-right: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h3 {
+            color: #764ba2;
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-item .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-item p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .project-year {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .certificate-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .certificate-card .issuer {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-card .date {
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .degree {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .year-gpa {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150/667eea/ffffff?text=GS" alt="Gürkan Şentürk" class="profile-img">
+            <h1>Gürkan Şentürk</h1>
+            <p class="subtitle">Yazılım Mühendisi | Android Developer (Kotlin) & Flutter Specialist<br>Jetpack Compose • MVVM & Clean Architecture</p>
+            <div class="social-links">
+                <a href="https://github.com/Gurkan26" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/gurkansenturk" target="_blank">LinkedIn</a>
+                <a href="mailto:gurkansenturk11@gmail.com">E-posta</a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>Hakkımda</h2>
+            <p class="about-text">Merhaba! Mobil uygulama geliştirme alanında uzmanlaşmış, modern teknolojilere tutkuyla bağlı bir yazılım mühendisiyim. Kariyerim boyunca sadece kod yazmakla yetinmeyip, ölçeklenebilir, kullanıcı odaklı ve modern mimari standartlara (MVVM, Clean Architecture) uygun mobil çözümler üretmeye odaklandım. Backend süreçleri ile kusursuz kullanıcı arayüzleri arasında köprü kurarken, sürdürülebilir ve temiz kod prensiplerini benimsiyor, performansı optimize edilmiş projeler geliştiriyorum. Yapay Zeka ve Finansal Teknolojileri mobil uygulamalara entegre etme konusunda özel ilgi duyuyorum ve bu alanlarda aktif olarak projeler geliştiriyorum.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Teknik Yetenekler</h2>
+            <div class="skills-grid">
+                <div class="skill-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <h3>Mobil & Cross-Platform</h3>
+                    <ul>
+                        <li>Kotlin (Android)</li>
+                        <li>Flutter & Dart</li>
+                        <li>Jetpack Compose</li>
+                        <li>XML Layouts</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <h3>Mimari & Kalite</h3>
+                    <ul>
+                        <li>MVVM Pattern</li>
+                        <li>Clean Architecture</li>
+                        <li>SOLID Prensipleri</li>
+                        <li>Dependency Injection (Hilt/Dagger)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <h3>Reaktif Programlama</h3>
+                    <ul>
+                        <li>Kotlin Coroutines</li>
+                        <li>Flow & StateFlow</li>
+                        <li>Reactive Streams</li>
+                        <li>Asenkron İşlemler</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <h3>Backend & Veri</h3>
+                    <ul>
+                        <li>RESTful APIs</li>
+                        <li>Firebase Services</li>
+                        <li>Room Database</li>
+                        <li>SQLite</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <h3>İleri Teknolojiler</h3>
+                    <ul>
+                        <li>OpenAI API</li>
+                        <li>Google ML Kit (OCR)</li>
+                        <li>Binance API</li>
+                        <li>TensorFlow Lite</li>
+                        <li>YOLOv8</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <h3>Araçlar & Diğer</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Flask (Python)</li>
+                        <li>RevenueCat</li>
+                        <li>Image Processing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>İş Deneyimi</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Freelance Developer</h3>
+                    <p class="company">Serbest Çalışan</p>
+                    <p class="date">Temmuz 2025 - Devam Ediyor</p>
+                    <p>Farklı müşteriler için özel mobil uygulama projeleri geliştiriyorum. Yapay zeka destekli ve modern teknolojilerle donatılmış çözümler sunuyorum.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Software Developer</h3>
+                    <p class="company">Veripark</p>
+                    <p class="date">Temmuz 2023 - Temmuz 2025 (2 yıl)</p>
+                    <p>Kotlin kullanarak güvenli ve performans odaklı mobil bankacılık uygulamaları geliştirdim. Küresel çapta kullanılan uygulamalarda kritik modüller üzerinde çalıştım.</p>
+                    <ul>
+                        <li>QR kod tarama ve OCR gibi görüntü işleme modüllerinin geliştirilmesi ve optimizasyonu</li>
+                        <li>Kullanıcı arayüzü tasarımı ve backend servis entegrasyonları</li>
+                        <li>Farklı ülkelerdeki kullanıcılar için yerelleştirilmiş bankacılık çözümleri</li>
+                        <li>Yüksek doğruluk ve hız gerektiren kritik modüllerin geliştirilmesi</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Software Engineer Intern</h3>
+                    <p class="company">Orion Innovation Turkey</p>
+                    <p class="date">Eylül 2022 - Ocak 2023 (5 ay)</p>
+                    <p>Android uygulama geliştirme süreçlerinde aktif rol aldım. Kotlin, Coroutines ve Flow teknolojilerini kullanarak modern Android uygulamaları geliştirdim.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Android Developer Intern</h3>
+                    <p class="company">Mobillium - Digital Product & Experience Studio</p>
+                    <p class="date">Haziran 2022 - Eylül 2022 (4 ay)</p>
+                    <p>Profesyonel Android geliştirme ortamında deneyim kazandım. Flow, Coroutines ve XML ile modern Android uygulamaları üzerinde çalıştım.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projeler</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="project-year">2026</span>
+                    <h3>Numa Nefes Egzersizi</h3>
+                    <p>Jetpack Compose kullanılarak geliştirilmiş modern bir nefes egzersizi uygulaması. RevenueCat entegrasyonu, Room database ve reactive programming yaklaşımı ile kullanıcı deneyimini optimize eden bir sağlık uygulaması.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Jetpack Compose</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">RevenueCat</span>
+                        <span class="tech-tag">Room</span>
+                        <span class="tech-tag">Coroutines</span>
+                        <span class="tech-tag">Flow</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2025</span>
+                    <h3>Binance Trade Assistant</h3>
+                    <p>Binance API ve OpenAI entegrasyonu ile kripto para ticareti için yapay zeka destekli analiz platformu. Spot/margin işlemleri, anlık fiyat takibi ve AI tabanlı alım-satım sinyalleri ile kullanıcılara kapsamlı ticaret asistanlığı sunar.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">Binance API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2025</span>
+                    <h3>Deprem Uyarı Sistemi</h3>
+                    <p>USGS API'yi periyodik olarak kontrol ederek 4.5 ve üzeri büyüklükteki depremleri tespit eden gerçek zamanlı uyarı sistemi. Kullanıcı konum bilgisi ve durum yanıtlarını Firebase'e aktararak admin panelinden yönetilebilen kapsamlı bir afet takip uygulaması.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">USGS API</span>
+                        <span class="tech-tag">Background Services</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2023</span>
+                    <h3>Mobil Geri Dönüşüm Yönlendiricisi</h3>
+                    <p>Atık malzemeleri fotoğraflayarak otomatik kategorize eden ve geri dönüşüm bilgisi sunan çevre dostu uygulama. EfficientDetv0 modeli ve TensorFlow kullanılarak yüksek doğrulukla nesne tanıma ve sınıflandırma yapılmaktadır.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Image Processing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2023</span>
+                    <h3>Nesne Tanıma & OCR Uygulaması</h3>
+                    <p>YOLOv8 ve Tesseract kütüphanelerini kullanarak gerçek zamanlı nesne tanıma ve metin okuma işlemleri yapan gelişmiş görüntü işleme uygulaması. Kamera akışından anlık sonuçlar üreten performanslı bir çözüm.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">Tesseract OCR</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2022</span>
+                    <h3>Nearby Restaurant</h3>
+                    <p>Kullanıcının konumuna göre en yakın restoranları bulan ve listeleyen konum tabanlı uygulama. Firebase altyapısı, MVVM mimari pattern ve Google Places API entegrasyonu ile geliştirilmiştir.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">MVVM</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google Places API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2021</span>
+                    <h3>Cast Ajansı Yönetim Sistemi</h3>
+                    <p>Oyuncu ajansı için geliştirilmiş kapsamlı yönetim sistemi. Nesne tabanlı programlama prensipleri kullanılarak C#, DevExpress ve MSSQL ile profesyonel bir masaüstü uygulaması.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">DevExpress</span>
+                        <span class="tech-tag">MSSQL</span>
+                        <span class="tech-tag">OOP</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2021</span>
+                    <h3>CagePress - Resim Sıkıştırma</h3>
+                    <p>Web tabanlı görsel sıkıştırma platformu. Ekip çalışması ile HTML, CSS ve JavaScript kullanılarak geliştirilen kullanıcı dostu bir resim optimizasyon aracı.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-year">2020</span>
+                    <h3>Etkinlik Takip Sistemi</h3>
+                    <p>Java ve MySQL kullanılarak geliştirilmiş etkinlik yönetim sistemi. QR kod okuma ve otomatik e-posta gönderme özellikleri ile katılımcı takibi sağlayan kapsamlı bir platform.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">QR Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Eğitim</h2>
+            <div class="education-card">
+                <h3>Fırat Üniversitesi</h3>
+                <p class="degree">Yazılım Mühendisliği</p>
+                <p class="year-gpa">2018 - 2023 • GNO: 3.39</p>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2>Sertifikalar</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <h3>Jetpack Compose for Android Bootcamp</h3>
+                    <p class="issuer">Techcareer.net</p>
+                    <p class="date">2025</p>
+                </div>
+
+                <div class="certificate-card">
+                    <h3>Kotlin İle Mobile App Patikası</h3>
+                    <p class="issuer">Patika.dev</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <div class="certificate-card">
+                    <h3>CS50's Introduction to Computer Science</h3>
+                    <p class="issuer">Harvard University</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <div class="certificate-card">
+                    <h3>Problem Solving</h3>
+                    <p class="issuer">HackerRank</p>
+                    <p class="date">2023</p>
+                </div>
+
+                <div class="certificate-card">
+                    <h3>Etkili İletişim Stratejileri ve Beden Dili</h3>
+                    <p class="issuer">İstanbul İşletme Enstitüsü</p>
+                    <p class="date">2020</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Gürkan Şentürk • Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+</body>
+</html>
