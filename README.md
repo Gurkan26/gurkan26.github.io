@@ -1,0 +1,1 @@
+# gurkansenturk.github.io
