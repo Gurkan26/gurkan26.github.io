@@ -1,1 +1,1 @@
-# gurkansenturk.github.io
+# gurkan26.github.io
